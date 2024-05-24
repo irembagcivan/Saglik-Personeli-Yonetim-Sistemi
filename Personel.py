@@ -37,8 +37,7 @@ class Personel():
         return self.__maas
     
     def __str__(self):
-        return f"Personel No: {self.__personel_no}, Ad: {self.__ad}, Soyad: {self.__soyad}, 
-                 Departman: {self.__departman}, Maas: {self.__maas}"
+        return f"Personel No:{self.__personel_no}\tAd:{self.__ad}\tSoyad:{self.__soyad}\tDepartman:{self.__departman}\tMaas:{self.__maas}TL\t"
         
 
     

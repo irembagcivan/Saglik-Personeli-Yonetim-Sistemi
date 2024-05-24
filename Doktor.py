@@ -1,7 +1,7 @@
 from Personel import Personel
 class Doktor(Personel):
     def __init__(self, personel_no, ad, soyad, departman, maas, uzmanlik, deneyim_yili, hastane):
-        super().__init__(self, personel_no, ad, soyad, departman, maas)
+        super().__init__(personel_no, ad, soyad, departman, maas)
         self.__uzmanlik = uzmanlik
         self.__deneyim_yili = deneyim_yili
         self.__hastane = hastane
@@ -25,8 +25,7 @@ class Doktor(Personel):
         return self.__hastane
     
     def __str__(self):
-        return super().__str__() + f", Uzmanlık: {self.__uzmanlik}, Deneyim Yılı: {self.__deneyim_yili}, 
-                                       Hastane: {self.__hastane}"
+        return super().__str__() + f"Uzmanlık:{self.__uzmanlik}\tDeneyim Yılı:{self.__deneyim_yili}\tHastane:{self.__hastane}"
 
     
     
