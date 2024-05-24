@@ -42,6 +42,9 @@ class Hasta():
 
     def get_tedavi(self):
         return self.__tedavi
+    
+    def tedavi_suresi_hesapla(self):
+        return self.__hasta_no * 1.5
 
     def __str__(self):
         return f"Hasta No:{self.__hasta_no}\tAd:{self.__ad}\tSoyad:{self.__soyad}\tDoğum Tarihi:{self.__dogum_tarihi}\tHastalık:{self.__hastalik}\tTedavi:{self.__tedavi}"

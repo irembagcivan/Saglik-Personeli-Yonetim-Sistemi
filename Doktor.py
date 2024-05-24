@@ -24,6 +24,10 @@ class Doktor(Personel):
     def get_hastane(self):
         return self.__hastane
     
+    def maas_arttir(self, oran):
+        yeni_maas = (self.get_maas() * 0.5) + self.get_maas()
+        self.set_maas(yeni_maas)
+    
     def __str__(self):
         return super().__str__() + f"Uzmanlık:{self.__uzmanlik}\tDeneyim Yılı:{self.__deneyim_yili}\tHastane:{self.__hastane}"
 

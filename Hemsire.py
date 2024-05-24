@@ -24,5 +24,9 @@ class Hemsire(Personel):
     def get_hastane(self):
         return self.__hastane
     
+    def maas_arttir(self, oran):
+        yeni_maas = (self.get_maas() * 0.4) + self.get_maas()
+        self.set_maas(yeni_maas)
+    
     def __str__(self):
         return super().__str__() + f"Çalışma Saati:{self.__calisma_saati}\tSertifika:{self.__sertifika}\tHastane:{self.__hastane}\t"
