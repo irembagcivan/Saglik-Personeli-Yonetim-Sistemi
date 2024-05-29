@@ -32,9 +32,9 @@ def main():
         print(hemsire3)
         print("")
 
-        hasta1 = Hasta(9, "İrem", "Selim", "07/12/2003", "Ağrı", "İlaç Tedavisi")
-        hasta2 = Hasta(10, "Sıla", "Ekran", "24/01/1995", "Çatlak", "Alçı Tedavisi")
-        hasta3 = Hasta(11, "Mert", "Demir", "12/10/2000", "Kırık", "Alçı Tedavisi")
+        hasta1 = Hasta(9, "İrem", "Selim", "2003/12/07", "Ağrı", "İlaç Tedavisi")
+        hasta2 = Hasta(10, "Sıla", "Ekran", "1985/01/24", "Çatlak", "Alçı Tedavisi")
+        hasta3 = Hasta(11, "Mert", "Demir", "2000/10/12", "Kırık", "Alçı Tedavisi")
         print(hasta1)
         print(hasta2)
         print(hasta3)
@@ -52,9 +52,9 @@ def main():
                 [6, "Kerem", "Öncü", "Hemşire", 40000, None, None, "Sada", "08.00-16.00", "Yoğun Bakım Hemşireliği", None, None, None, None],
                 [7, "Zeynep", "Bilge", "Hemşire", 42000, None, None, "Medipol", "20.00-08.00", "Ameliyathane Hemşireliği", None, None, None, None],
                 [8, "Yağmur", "Taş", "Hemşire", 43000, None, None, "Şifa", "16.00-24.00", "Çocuk Acil Bakım Hemşireliği", None, None, None, None],
-                [9, "İrem", "Selim", None, None, None, None, None, None, None, 9, "07/12/2003", "Ağrı", "İlaç Tedavisi"],
-                [10, "Sıla", "Ekran", None, None, None, None, None, None, None, 10, "24/01/1995", "Çatlak", "Alçı Tedavisi"],
-                [11, "Mert", "Demir", None, None, None, None, None, None, None, 11, "12/10/2000", "Kırık", "Alçı Tedavisi"]
+                [9, "İrem", "Selim", None, None, None, None, None, None, None, 9, "2003/12/07", "Ağrı", "İlaç Tedavisi"],
+                [10, "Sıla", "Ekran", None, None, None, None, None, None, None, 10, "1985/01/24", "Çatlak", "Alçı Tedavisi"],
+                [11, "Mert", "Demir", None, None, None, None, None, None, None, 11, "2000/10/12", "Kırık", "Alçı Tedavisi"]
                 ]
         
         df = pd.DataFrame(data, columns = ["NO", "AD", "SOYAD", "DEPARTMAN", "MAAŞ", "UZMANLIK", "DENEYİM-YILI", "HASTANE", "ÇALIŞMA SAATİ",
@@ -78,15 +78,29 @@ def main():
         print("*"*170)
 
         hasta_bilgileri = df_filled[df_filled["DEPARTMAN"] == 0]
-        sorted_hasta_bilgileri = hasta_bilgileri.sort_values(by="AD")
+        hasta_bilgileri2 = hasta_bilgileri.sort_values(by="AD")
         print("\nHASTA ADINA GÖRE SIRALANMIŞ DATAFRAME:\n")
-        print(sorted_hasta_bilgileri)
+        print(hasta_bilgileri2)
         print("")
         print("*" * 170)
 
         print("\nMAAŞI 7000 TL'NİN ÜZERİNDE OLAN PERSONELLER:\n")
         maas_bilgisi = df[df["MAAŞ"] > 7000][["NO", "AD", "SOYAD", "DEPARTMAN", "MAAŞ"]]
         print(maas_bilgisi)
+        print("")
+        print("*"*170)
+
+        df_filled["DOĞUM-TARİHİ"] = pd.to_datetime(df_filled["DOĞUM-TARİHİ"], errors='coerce', format='%Y/%m/%d')
+        dogum_tarihi_1990_sonrasi = df_filled[df_filled["DOĞUM-TARİHİ"].dt.year >= 1990]
+        print("\nDOĞUM TARİHİ 1990 VE SONRASI OLAN HASTALAR:\n")
+        print(dogum_tarihi_1990_sonrasi)
+        print("")
+        print("*"*170)
+
+        yeni_df = df[["AD", "SOYAD", "DEPARTMAN", "MAAŞ", "UZMANLIK", "DENEYİM-YILI", "HASTALIK", "TEDAVİ"]]
+        df_filled2 = yeni_df.fillna(0)
+        print("\nYENİ DATAFRAME\n")
+        print(df_filled2)
         print("")
         print("*"*170)
 
