@@ -1,5 +1,6 @@
 class Hasta():
     def __init__(self, hasta_no, ad, soyad, dogum_tarihi, hastalik, tedavi):
+        # Private değişkenler
         self.__hasta_no = hasta_no
         self.__ad = ad
         self.__soyad = soyad
@@ -7,6 +8,7 @@ class Hasta():
         self.__hastalik = hastalik
         self.__tedavi = tedavi
 
+    # Setter metotları sınıf özniteliklerini değiştirmek için kullanır
     def set_hasta_no(self, hasta_no):
         self.__hasta_no = hasta_no
 
@@ -25,6 +27,7 @@ class Hasta():
     def set_tedavi(self, tedavi):
         self.__tedavi = tedavi
      
+    # Getter metotları sınıf özniteliklerini geri döndürmek için kullanılır
     def get_hasta_no(self):
         return self.__hasta_no
 
@@ -43,8 +46,10 @@ class Hasta():
     def get_tedavi(self):
         return self.__tedavi
     
+    # Tedavi süresi hesaplama metodu
     def tedavi_suresi_hesapla(self):
         return self.__hasta_no * 1.5
 
+    # Hasta bilgileri döndürülür
     def __str__(self):
         return f"Hasta No:{self.__hasta_no}\tAd:{self.__ad}\tSoyad:{self.__soyad}\tDoğum Tarihi:{self.__dogum_tarihi}\tHastalık:{self.__hastalik}\tTedavi:{self.__tedavi}"
